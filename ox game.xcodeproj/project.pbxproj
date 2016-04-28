@@ -16,6 +16,10 @@
 		B67B34AB1CC9EE0900599D60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B67B34A91CC9EE0900599D60 /* LaunchScreen.storyboard */; };
 		B67B34B61CC9EE0A00599D60 /* ox_gameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B34B51CC9EE0A00599D60 /* ox_gameTests.swift */; };
 		B67B34C11CC9EE0A00599D60 /* ox_gameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67B34C01CC9EE0A00599D60 /* ox_gameUITests.swift */; };
+		B67B34CF1CC9F25400599D60 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B67B34CE1CC9F25400599D60 /* bg.png */; };
+		B67B34D31CCA54B300599D60 /* o.png in Resources */ = {isa = PBXBuildFile; fileRef = B67B34D11CCA54B300599D60 /* o.png */; };
+		B67B34D41CCA54B300599D60 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = B67B34D21CCA54B300599D60 /* x.png */; };
+		B67B34D81CCA68C100599D60 /* reset.png in Resources */ = {isa = PBXBuildFile; fileRef = B67B34D71CCA68C100599D60 /* reset.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		B67B34BC1CC9EE0A00599D60 /* ox gameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ox gameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67B34C01CC9EE0A00599D60 /* ox_gameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ox_gameUITests.swift; sourceTree = "<group>"; };
 		B67B34C21CC9EE0A00599D60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B67B34CE1CC9F25400599D60 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		B67B34D11CCA54B300599D60 /* o.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = o.png; sourceTree = "<group>"; };
+		B67B34D21CCA54B300599D60 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
+		B67B34D71CCA68C100599D60 /* reset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reset.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,7 @@
 		B67B34901CC9EE0900599D60 = {
 			isa = PBXGroup;
 			children = (
+				B67B34D01CC9F28B00599D60 /* Supporting Files */,
 				B67B349B1CC9EE0900599D60 /* ox game */,
 				B67B34B41CC9EE0A00599D60 /* ox gameTests */,
 				B67B34BF1CC9EE0A00599D60 /* ox gameUITests */,
@@ -129,6 +138,17 @@
 				B67B34C21CC9EE0A00599D60 /* Info.plist */,
 			);
 			path = "ox gameUITests";
+			sourceTree = "<group>";
+		};
+		B67B34D01CC9F28B00599D60 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B67B34D11CCA54B300599D60 /* o.png */,
+				B67B34D21CCA54B300599D60 /* x.png */,
+				B67B34CE1CC9F25400599D60 /* bg.png */,
+				B67B34D71CCA68C100599D60 /* reset.png */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +219,7 @@
 				TargetAttributes = {
 					B67B34981CC9EE0900599D60 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = AUV47J59M2;
 					};
 					B67B34B01CC9EE0900599D60 = {
 						CreatedOnToolsVersion = 7.3;
@@ -235,10 +256,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B67B34CF1CC9F25400599D60 /* bg.png in Resources */,
 				B67B349F1CC9EE0900599D60 /* GameScene.sks in Resources */,
+				B67B34D41CCA54B300599D60 /* x.png in Resources */,
 				B67B34AB1CC9EE0900599D60 /* LaunchScreen.storyboard in Resources */,
+				B67B34D31CCA54B300599D60 /* o.png in Resources */,
 				B67B34A81CC9EE0900599D60 /* Assets.xcassets in Resources */,
 				B67B34A61CC9EE0900599D60 /* Main.storyboard in Resources */,
+				B67B34D81CCA68C100599D60 /* reset.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,10 +432,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ox game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "toxico.ox-game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -418,10 +446,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ox game/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "toxico.ox-game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -492,6 +523,7 @@
 				B67B34C71CC9EE0A00599D60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B67B34C81CC9EE0A00599D60 /* Build configuration list for PBXNativeTarget "ox gameTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +532,7 @@
 				B67B34CA1CC9EE0A00599D60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B67B34CB1CC9EE0A00599D60 /* Build configuration list for PBXNativeTarget "ox gameUITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +541,7 @@
 				B67B34CD1CC9EE0A00599D60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

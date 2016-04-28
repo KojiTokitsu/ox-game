@@ -9,45 +9,33 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
-
+class GameViewController: UIViewController, UIGestureRecognizerDelegate {
+    var scene: GameScene!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let scene = GameScene(fileNamed:"GameScene") {
-            // Configure the view.
-            let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            skView.presentScene(scene)
-        }
-    }
-
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
-        } else {
-            return .All
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
+        let skView = view as! SKView
+        skView.multipleTouchEnabled = false
+        
+        scene = GameScene(size: skView.bounds.size)
+        scene.scaleMode = .AspectFill
+        skView.presentScene(scene)
     }
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+
+    @IBAction func didTap(sender: UITapGestureRecognizer) {
+        let location = sender.locationInView(view)
+        print("tapped at \(location.x), \(location.y)")
+        let size: CGSize = UIScreen.mainScreen().bounds.size
+        let reset_top = size.height - (256 + 176)
+        let reset_bottom = size.height - 256
+        if 0 < location.x && location.x < 176 && reset_top < location.y && location.y < reset_bottom {
+                scene.reset()
+        }
+        else{
+            scene.mark(location)
+        }
     }
 }

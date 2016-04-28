@@ -9,37 +9,57 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!"
-        myLabel.fontSize = 45
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-        
-        self.addChild(myLabel)
+    var turn_o = true
+    required init(coder aDecoder: NSCoder) {
+        fatalError("NSCoder not supported")
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
+    override init(size: CGSize) {
+        super.init(size: size)
+        backgroundColor = SKColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        anchorPoint = CGPoint(x: 0,y: 0)
         
-        for touch in touches {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
+        reset()
     }
-   
+    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+    }
+    
+    func transform(w: CGFloat)->CGFloat {
+        switch w {
+        case let w where 0 < w && w < 80:
+            return 0
+        case let w where 80 < w && w < 160:
+            return 80
+        case let w where 160 < w && w < 240:
+            return 160
+        default:
+            return -80
+        }
+    }
+    
+    func mark(location: CGPoint) {
+        let imageName = turn_o ? "o" : "x"
+        let sign = SKSpriteNode(imageNamed: imageName)
+        let size: CGSize = UIScreen.mainScreen().bounds.size
+        sign.position = CGPoint(x: transform(location.x), y: transform(size.height - location.y))
+        sign.anchorPoint = CGPoint(x: 0, y: 0)
+        addChild(sign)
+        turn_o = !turn_o
+    }
+    
+    func reset(){
+        removeAllChildren()
+        
+        let background = SKSpriteNode(imageNamed: "bg")
+        background.position = CGPoint(x: 0, y: 0)
+        background.anchorPoint = CGPoint(x: 0, y: 0)
+        addChild(background)
+        
+        let reset = SKSpriteNode(imageNamed: "reset")
+        reset.position = CGPoint(x: 0, y: 256)
+        reset.anchorPoint = CGPoint(x: 0, y: 0)
+        addChild(reset)
     }
 }
